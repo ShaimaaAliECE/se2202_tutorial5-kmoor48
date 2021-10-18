@@ -75,13 +75,14 @@ function isGameOver()
 for(let i = 0; i<amountOfButtons.length; i++){
     if(amountOfButtons[i].disabled==true){
         count++;
-    }if(count==amountOfButtons.length){
-        //if count has been filled (pushed) and its disabled then the game is over
-        return true;
-        //game over is true bc amount of presses=amount of buttons
-        }else{
-        return false;
     }
+}
+if(count==amountOfButtons.length){
+    //if count has been filled (pushed) and its disabled then the game is over
+    return true;
+    //game over is true bc amount of presses=amount of buttons
+    }else{
+    return false;
 }
     // This function returns true if all the buttons are disabled and false otherwise 
    
