@@ -1,10 +1,10 @@
 let nextPlayer = 'X'; // takes a value of either 'X' or 'O' according to the game turns
 
-var userInitialization = document.createElement('button');
+/*var userInitialization = document.createElement('button');
 userInitialization.innerHTML= "Start Game";
 userInitialization.addEventListener('click',(initialEvent.target.hidden=true));
-
-document.getElementById('next-lbl').innerHTML=nextPlayer;
+*/
+document.getElementById("next-lbl").innerHTML=nextPlayer;
 //makes player value x at top of page
 
 
@@ -19,8 +19,7 @@ createGameBoard()
 
 function createGameBoard()
 { 
-    document.getElementByTagName('td');
-    for(let b of document.getElementByTagName('td') ){
+    for(let b of document.getElementsByTagName("td") ){
         let button = document.createElement('button');
         button.innerHTML = '[ ]';
         document.getElementById(b.id).appendChild(button);
@@ -48,7 +47,7 @@ function takeCell(event)
     }else{
         nextPlayer= 'X';
     }
-    document.getElement('next-lbl').innerHTML = nextPlayer;
+    document.getElementById("next-lbl").innerHTML = nextPlayer;
     a.disabled=true;
     /*
         When the button is clicked, the space inside its square brackets is replaced by the value in the nextPlayer before switching it
