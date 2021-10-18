@@ -1,31 +1,29 @@
 let nextPlayer = 'X'; // takes a value of either 'X' or 'O' according to the game turns
 
 var userInitialization = document.createElement('button');
-userInitialization.innerText= "Start Game";
-button.textContent = mytext;
-document.getElementsById("textarea").innerText=mytext;
-var button = document.createElement("button");
-document.getElementById("buttonarea").appendChild(button);
-document.getElementById('game-over-lbl').appendChild(button);
+userInitialization.innerHTML= "Start Game";
+userInitialization.addEventListener('click',(initialEvent.target.hidden=true));
+
+document.getElementById('next-lbl').innerHTML=nextPlayer;
+//makes player value x at top of page
 
 
 //initialize the game
 
 // use the value stored in the nextPlayer variable to indicate who the next player is
-let player1= 'X';
-let player2= 'O';
-document.nextPlayer('O');
 
-var table = document.getElementbyId('td');
-var button = document.createElement('button')
+
+
 //This call will create the buttons needed for the gameboard.
 createGameBoard()
 
 function createGameBoard()
 { 
     document.getElementByTagName('td');
-    for(let i=0; i<10; i++ ){
-        table[i].innerHTML="<button>[ ]</button>";
+    for(let b of document.getElementByTagName('td') ){
+        let button = document.createElement('button');
+        button.innerHTML = '[ ]';
+        document.getElementById(b.id).appendChild(button);
     }
 
 
@@ -43,7 +41,15 @@ for (let i=0; i<btns.length; i++)
 // This function will be used to respond to a click event on any of the board buttons.
 function takeCell(event)
 { 
-
+    let a = event.target;
+    a.innerHTML = nextPlayer;
+    if(nextPlayer=='X'){
+        nextPlayer='O';
+    }else{
+        nextPlayer= 'X';
+    }
+    document.getElement('next-lbl').innerHTML = nextPlayer;
+    a.disabled=true;
     /*
         When the button is clicked, the space inside its square brackets is replaced by the value in the nextPlayer before switching it
     */
@@ -53,7 +59,9 @@ function takeCell(event)
     // Check if the game is over
     if (isGameOver())
     {
-         document.getElementbyId('game-over-lbl').innerText="Game Over";
+        let EndGame = document.createElement('h1');
+        EndGame.innerHTML = "game over";
+         document.getElementbyId('game-over-lbl').appendChild(EndGame);
     
         // let the lable with the id 'game-over-lbl' display the words 'Game Over' inside <h1> element
     }
@@ -63,6 +71,19 @@ function takeCell(event)
 
 function isGameOver()
 { 
+    let amountOfButtons = document.querySelectorAll('button');
+    let count = 0;
+for(let i = 0; i<amountOfButtons.length; i++){
+    if(amountOfButtons[i].disabled==true){
+        count++;
+    }if(count==amountOfButtons.length){
+        //if count has been filled (pushed) and its disabled then the game is over
+        return true;
+        //game over is true bc amount of presses=amount of buttons
+        }else{
+        return false;
+    }
+}
     // This function returns true if all the buttons are disabled and false otherwise 
    
 }
