@@ -47,7 +47,7 @@ function takeCell(event)
     }else{
         nextPlayer= 'X';
     }
-    document.getElementById("next-lbl").innerHTML = nextPlayer;
+    document.getElementById('next-lbl').innerHTML = nextPlayer;
     a.disabled=true;
     /*
         When the button is clicked, the space inside its square brackets is replaced by the value in the nextPlayer before switching it
@@ -58,9 +58,9 @@ function takeCell(event)
     // Check if the game is over
     if (isGameOver())
     {
-        let EndGame = document.createElement('h1');
-        EndGame.innerHTML = "game over";
-         document.getElementbyId('game-over-lbl').appendChild(EndGame);
+        let EndGame = document.getElementById('game-over-lbl');
+        EndGame.innerHTML = "<h1>game over</h1>";
+
     
         // let the lable with the id 'game-over-lbl' display the words 'Game Over' inside <h1> element
     }
@@ -70,20 +70,23 @@ function takeCell(event)
 
 function isGameOver()
 { 
+   
     let amountOfButtons = document.querySelectorAll('button');
     let count = 0;
-for(let i = 0; i<amountOfButtons.length; i++){
-    if(amountOfButtons[i].disabled==true){
-        count++;
+
+    for(let i = 0; i<amountOfButtons.length; i++){
+        if(amountOfButtons[i].disabled===true){
+            count++;
+        }
     }
-}
-if(count==amountOfButtons.length){
+    if(count===amountOfButtons.length){
     //if count has been filled (pushed) and its disabled then the game is over
-    return true;
+        return true;
     //game over is true bc amount of presses=amount of buttons
-    }else{
-    return false;
-}
+    }
+    else{
+        return false;
+    }
     // This function returns true if all the buttons are disabled and false otherwise 
    
 }
